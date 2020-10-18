@@ -4,6 +4,8 @@ import { SoupLabel } from '../Menu/SoupGrid';
 import { soupGreen } from '../Styles/colors';
 import { Title } from '../Styles/title';
 import { formatPrice } from '../SoupData/SoupData';
+import { QuantityInput } from './QuantityInput';
+import { useQuantity } from '../Hooks/useQuantity';
 
 
 const Dialog = styled.div`
@@ -20,6 +22,7 @@ const Dialog = styled.div`
 export const DialogContent = styled.div`
     overflow: auto;
     min-height: 100px;
+    padding: 4px 8px;
     `;
 
 export const DialogFooter = styled.div`
@@ -60,23 +63,30 @@ const DialogBanner = styled.div`
     background-position: center;
     background-size:cover;
 `;
-const DialogBannerName = styled(SoupLabel)`
+    const DialogBannerName = styled(SoupLabel)`
     top: 100px;
     font-size:30px;
     padding:4px 40px;
 `;
 
- export function SoupDialog({ openSoup, setOpenSoup, setOrders, orders }) {
-     function close() {
+export function getPrice(order){
+    return order.quantity * order.price;
+
+}
+
+function SoupDialogContainer({ openSoup, setOpenSoup, setOrders, orders }) {   
+    const quantity = useQuantity(openSoup && openSoup.quantity);
+    function close() {
          setOpenSoup();
      }
-     if (!openSoup) return null;
 
-     const order = {
-         ...openSoup
+const order = {
+         ...openSoup,
+         quantity: quantity.value
+
      }
 
-     function addToOrder(){
+function addToOrder(){
         setOrders([...orders, order]);
         close();
      }
@@ -87,10 +97,12 @@ const DialogBannerName = styled(SoupLabel)`
                     <DialogBanner img={openSoup.img}>
                             <DialogBannerName>{openSoup.name}</DialogBannerName>
                     </DialogBanner>
-                    <DialogContent />
+                    <DialogContent>
+                        <QuantityInput quantity={quantity}/>
+                    </DialogContent>
                     <DialogFooter>
                         <ConfirmButton onClick={addToOrder}>
-                            Add to order : {formatPrice(openSoup.price)}
+                            Add to order : {formatPrice(getPrice (order))}
                         </ConfirmButton>
                     </DialogFooter>
                 </Dialog>
@@ -98,3 +110,7 @@ const DialogBannerName = styled(SoupLabel)`
          );
    }
 
+export function SoupDialog (props){
+       if(!props.openSoup) return null;
+       return <SoupDialogContainer {...props}/>
+   }
