@@ -84,6 +84,7 @@ export const soupTypes = [
         section: 'Vegan',
         price: 119
     },
+    
 ];
 
 export const soups = soupTypes.reduce((res, soup)=>{

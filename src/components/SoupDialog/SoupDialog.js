@@ -76,6 +76,9 @@ export function getPrice(order){
 
 function SoupDialogContainer({ openSoup, setOpenSoup, setOrders, orders }) {   
     const quantity = useQuantity(openSoup && openSoup.quantity);
+   
+
+
     function close() {
          setOpenSoup();
      }

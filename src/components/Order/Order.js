@@ -35,25 +35,34 @@ const OrderItem = styled.div`
 `;
 
 
-export function Order({orders}){
+export function Order({orders, setOrders}){
     const subtotal = orders.reduce((total, order)=> {
         return total + getPrice(order);
     }, 0);
     const tax = subtotal * 0.10;
     const total = subtotal + tax;
+
+    const deletItem = index => {
+        const newOrders = [...orders];
+        newOrders.splice(index, 1);
+        setOrders(newOrders);
+    }
+
     return (
            <OrderStyled>
                  {orders.length === 0 ? (
                  <OrderContent>your cart looking empty.</OrderContent>
                  ) : (
                  <OrderContent> 
-                     <OrderContainer>Your order: </OrderContainer> {''}
-                     {orders.map (order => (
+                     <OrderContainer>Your order: </OrderContainer>
+                     {orders.map ((order, index) => (
                          <OrderContainer>
                              <OrderItem>
                                  <div>{order.quantity}</div>
                                  <div>{order.name}</div> 
+                                  <div style={{cursor:'pointer'}} onClick={()=> {deletItem(index)}}>X</div>
                                  <div>{formatPrice(getPrice(order))}</div>
+                                
                             </OrderItem>
                          </OrderContainer>
                      ))}

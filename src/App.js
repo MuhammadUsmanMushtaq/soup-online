@@ -21,7 +21,7 @@ function App() {
     <GlobalStyle />
     <SoupDialog {...openSoup} {...orders}/>
     <Navbar />
-    <Order {...orders}/>
+    <Order {...orders} />
     <Banner />
     <Menu {...openSoup}/>
     </>
