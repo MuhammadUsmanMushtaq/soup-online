@@ -6,8 +6,8 @@ import { formatPrice } from '../SoupData/SoupData';
 
 
 const MenuStyled = styled.div`
-        margin:0 400px 50px 20px;
-        height: 1000px;
+        margin:48px auto;
+        padding:0 24px;
 `;
 
 export function Menu ({setOpenSoup}){

@@ -5,6 +5,7 @@ export const SoupGrid = styled.div `
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 `
 export const SoupLabel = styled(Title)`
     position: absolute;

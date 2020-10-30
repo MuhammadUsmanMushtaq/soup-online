@@ -8,7 +8,7 @@ export function formatPrice (price){
 export const soupTypes = [
     {
         name: 'Chicken Corn Soup',
-        img: '/img/chikensoup.jpg',
+        img: '/img/chickensoup.jpg',
         section: 'Top rated',
         price: 119
     },
@@ -20,13 +20,13 @@ export const soupTypes = [
     },
     {
         name: 'Chicken Pasta Soup',
-        img: '/img/chickenPasta.jpg',
+        img: '/img/chickenpasta.jpg',
         section: 'Non Veg',
         price: 129
     },
     {
         name: 'Butternut Soup',
-        img: '/img/butterNUt.jpg',
+        img: '/img/butternut.jpg',
         section: 'Non Veg',
         price: 119
     },
@@ -38,13 +38,13 @@ export const soupTypes = [
     },
     {
         name: 'Mashroom Soup',
-        img: '/img/brocolimashroom.jpg',
+        img: '/img/brocolimushroom.jpg',
         section: 'Top rated',
         price: 119
     },
     {
-        name: 'Vegitable Soup',
-        img: '/img/vegitable.jpg',
+        name: 'Vegetable Soup',
+        img: '/img/vegetable.jpg',
         section: 'Vegan',
         price: 99
     },
@@ -80,7 +80,7 @@ export const soupTypes = [
     },
     {
         name: 'Dumplink Soup',
-        img: '/img/dumplink.jpg',
+        img: '/img/dumpling.jpg',
         section: 'Vegan',
         price: 119
     },
