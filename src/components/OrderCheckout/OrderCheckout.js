@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {DialogShadow, Dialog, DialogContent,DialogClose, ConfirmButton } from '../SoupDialog/SoupDialog';
+import {OrderDelete} from '../Order/Order';
 import { formatPrice } from '../SoupData/SoupData';
 import { getPrice } from '../SoupDialog/SoupDialog';
 
@@ -105,7 +106,7 @@ openCheckout ? <>
                     <OrderItem>
                         <div>{order.quantity}</div>
                         <div>{order.name}</div> 
-                        <div style={{cursor:'pointer'}} onClick={()=> {deletItem(index)}}>X</div>
+                        <OrderDelete style={{cursor:'pointer'}} onClick={()=> {deletItem(index)}}></OrderDelete>
                         <div>{formatPrice(getPrice(order))}</div>
                     
                 </OrderItem>
